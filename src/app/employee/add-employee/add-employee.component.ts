@@ -8,18 +8,18 @@ import { Employee } from 'src/interface/employee';
   styleUrls: ['./add-employee.component.scss']
 })
 export class AddEmployeeComponent implements OnInit {
-employee:Employee ={
-  firstName: '',
-  lastName:'',
-  city:'',
-  title:'',
-  hireDate:new Date(),
-  birthDate:new Date(),
-  region:0,
-  reportsTo:0,
-  titleOfCourtesy:''
+  employee:Employee ={
+    firstName: '',
+    lastName:'',
+    city:'',
+    title:'',
+    hireDate:new Date(),
+    birthDate:new Date(),
+    region:0,
+    reportsTo:0,
+    titleOfCourtesy:''
 
-}
+  }
   constructor() { }
 
   ngOnInit(): void {
@@ -29,6 +29,6 @@ employee:Employee ={
     console.log(form.value)
   }
   resetPage(form:NgForm){
-form.reset();
+    form.reset();
   }
 }

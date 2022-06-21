@@ -1,0 +1,72 @@
+<form #addProduct="ngForm" (submit) ="insertProduct(addProduct)" >
+    <div class="row">
+        <div class="col-3">
+            <div class="mb-3">
+                <label for="txtFName">Product Name</label>
+                <input id="txtFName" [(ngModel)]="product.name" name="name" class="form-control"/>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="mb-3">
+                <label for="txtFName">supplierId</label>
+                <input id="txtFName" [(ngModel)]="product.supplierId" name="supplierId" class="form-control"/>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="mb-3">
+                <label for="txtFName">categoryId</label>
+                <input id="txtFName" [(ngModel)]="product.categoryId" name="categoryId" class="form-control"/>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <div class="mb-3">
+                <label for="txtFName">quantityPerUnit</label>
+                <input id="txtFName" [(ngModel)]="product.quantityPerUnit" name="quantityPerUnit" class="form-control"/>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="mb-3">
+                <label for="txtFName">unitPrice</label>
+                <input id="txtFName" [(ngModel)]="product.unitPrice" name="unitPrice" class="form-control"/>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="mb-3">
+                <label for="txtFName">unitsInStock</label>
+                <input id="txtFName" [(ngModel)]="product.unitsInStock" name="unitsInStock" class="form-control"/>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <div class="mb-3">
+                <label for="txtFName">unitsOnOrder</label>
+                <input id="txtFName" [(ngModel)]="product.unitsOnOrder" name="unitsOnOrder" class="form-control"/>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="mb-3">
+                <label for="txtFName">reorderLevel</label>
+                <input id="txtFName" [(ngModel)]="product.reorderLevel" name="reorderLevel" class="form-control"/>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="mb-3">
+                <label for="discontinued">discontinued</label>
+                <select id="discontinued" [(ngModel)]="product.discontinued" name="discontinued" class="form-control">
+                    <option ngvalue="0">False</option>
+                    <option ngvalue="1">True</option>
+                    
+                </select>
+            </div>
+        </div>
+    </div>
+    
+
+    <input type="submit" value="Add order" class="btn btn-primary"/>
+    <input type="button" value="Cancel" class="btn btn-default" (click)="resetPage(addProduct)"/>
+</form>
+

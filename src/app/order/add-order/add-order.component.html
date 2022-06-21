@@ -1,0 +1,36 @@
+<form #addOrder="ngForm" (submit) ="insertOrder(addOrder)" >
+    <div class="row">
+        <div class="col-3">
+            <div class="mb-3">
+                <label for="txtFName">productId</label>
+                <input id="txtFName" [(ngModel)]="order.productId" name="productId" class="form-control"/>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="mb-3">
+                <label for="txtFName">unitPrice</label>
+                <input id="txtFName" [(ngModel)]="order.unitPrice" name="unitPrice" class="form-control"/>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="mb-3">
+                <label for="txtFName">discount</label>
+                <input id="txtFName" [(ngModel)]="order.discount" name="discount" class="form-control"/>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <div class="mb-3">
+                <label for="txtFName">quantity</label>
+                <input id="txtFName" [(ngModel)]="order.quantity" name="quantity" class="form-control"/>
+            </div>
+        </div>
+    </div>
+    
+
+    <input type="submit" value="Add order" class="btn btn-primary"/>
+    <input type="button" value="Cancel" class="btn btn-default" (click)="resetPage(addOrder)"/>
+</form>
+

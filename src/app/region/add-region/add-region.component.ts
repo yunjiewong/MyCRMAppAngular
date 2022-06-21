@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Region } from 'src/interface/region';
 
 @Component({
   selector: 'app-add-region',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddRegionComponent implements OnInit {
 
+  region: Region={
+    RegionName:''
+  }
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  insertRegion(form:NgForm){
+    console.log(form.value)
+  }
+  resetPage(form:NgForm){
+    form.reset();
   }
 
 }

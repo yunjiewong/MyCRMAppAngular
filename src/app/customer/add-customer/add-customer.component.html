@@ -1,0 +1,61 @@
+<form #addCustomer="ngForm" (submit) ="insertCustomer(addCustomer)" >
+    <div class="row">
+        <div class="col-3">
+            <div class="mb-3">
+                <label for="txtFName">Customer Name</label>
+                <input id="txtFName" [(ngModel)]="customer.name" name="name" class="form-control"/>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="mb-3">
+                <label for="txtFName">Title</label>
+                <input id="txtFName" [(ngModel)]="customer.title" name="title" class="form-control"/>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="mb-3">
+                <label for="txtFName">RegionId</label>
+                <input id="txtFName" [(ngModel)]="customer.region" name="region" class="form-control"/>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <div class="mb-3">
+                <label for="txtFName">Address</label>
+                <input id="txtFName" [(ngModel)]="customer.address" name="address" class="form-control"/>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="mb-3">
+                <label for="txtFName">City</label>
+                <input id="txtFName" [(ngModel)]="customer.city" name="city" class="form-control"/>
+            </div>
+        </div>  
+        <div class="col-3">
+            <div class="mb-3">
+                <label for="txtFName">postal Code</label>
+                <input id="txtFName" [(ngModel)]="customer.postalCode" name="postalCode" class="form-control"/>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <div class="mb-3">
+                <label for="txtFName">Country</label>
+                <input id="txtFName" [(ngModel)]="customer.country" name="country" class="form-control"/>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="mb-3">
+                <label for="txtFName">Phone</label>
+                <input id="txtFName" [(ngModel)]="customer.phone" name="phone" class="form-control"/>
+            </div>
+        </div>
+
+    </div>
+
+    <input type="submit" value="Add region" class="btn btn-primary"/>
+    <input type="button" value="Cancel" class="btn btn-default" (click)="resetPage(addCustomer)"/>
+</form>
+
