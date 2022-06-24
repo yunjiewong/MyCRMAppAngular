@@ -7,7 +7,7 @@
 
 <h2>Edit Region</h2>
 <hr>
-<input type="button" class="btn btn-warning" value="fill data" (click)="setData()" />
+<input type="button" class="btn btn-warning mb-3" value="Fill old region" (click)="setData()" />
 
 <form [formGroup]="editRegionForm">
    <div class="form-group mb-3">
@@ -23,5 +23,5 @@
    </div>
 
    
-   <input type="button" class="btn btn-primary" [disabled]="!editRegionForm.valid" value="update Region " (click)="updateRegion()"/>
+   <input type="button" class="btn btn-primary" [disabled]="!editRegionForm.valid" value="Update Region " (click)="updateRegion()"/>
 </form>

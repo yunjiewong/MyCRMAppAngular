@@ -14,7 +14,7 @@ export class EditRegionComponent implements OnInit {
   id:number=0;
   region:Region={
     id: 0,
-    name: ''
+    name: "",
   }
   isSuccessful:boolean=false;
   editRegionForm: FormGroup;
@@ -27,21 +27,25 @@ export class EditRegionComponent implements OnInit {
     this.editRegionForm= new FormGroup({
       'regionName': new FormControl(null, [Validators.required,Validators.minLength(4)]),
     });
+
+
   }
 
   ngOnInit(): void {
-    this.regService.getRegById(this.id).subscribe(d=>{
-      this.region = d
-    });
-    console.log(this.id);
-    console.log(this.region);
+   
+
+   
   }
 
   setData(){
     this.regService.getRegById(this.id).subscribe(d=>{
-      this.region = d
+      
+      this.editRegionForm.patchValue({
+        'regionName': d.name,
+      })
     })
   }
+
 
   updateRegion(){
     this.region.id = this.id;
