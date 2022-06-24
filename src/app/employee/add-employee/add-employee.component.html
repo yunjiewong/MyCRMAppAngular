@@ -1,3 +1,12 @@
+<div *ngIf="isSuccessful" class="alert alert-success alert-dismissable fade show" role="alert">
+    <strong>New Employee has been added! </strong>
+  
+    <a [routerLink]= "'/employee/list'"> Go to List</a>
+</div>
+
+
+
+
 <form #addEmployee="ngForm" (submit) ="insertEmployee(addEmployee)" >
     <div class="row">
         <div class="col-4">
@@ -43,25 +52,48 @@
     </div>
    </div>
    <div class="row">
-    <div class="col-4">
-        <div class="mb-3">
-            <label for="txtbirthdate">Birth Date</label>
-        <input type="date" id="txtBirthdate" [(ngModel)]="employee.birthDate" name="birthDate" class="form-control"/>
+        <div class="col-4">
+            <div class="mb-3">
+                <label for="txtbirthdate">Birth Date</label>
+            <input type="date" id="txtBirthdate" [(ngModel)]="employee.birthDate" name="birthDate" class="form-control"/>
+            </div>
         </div>
-    </div>
-    <div class="col-4">
-        <div class="mb-3">
-            <label for="ddlReports">Reports To</label>
-        <select id="ddlReports" [(ngModel)]="employee.reportsTo" name="reports" class="form-control">
-            <option value="0">Select</option>
-            <option value="1">Olivia</option>
-            <option value="2">Sarah</option>
-            </select>
+        <div class="col-4">
+            <div class="mb-3">
+                <label for="ddlReports">Reports To</label>
+            <select id="ddlReports" [(ngModel)]="employee.reportsTo" name="reports" class="form-control">
+                <option value="0">Select</option>
+                <option value="1">Olivia</option>
+                <option value="2">Sarah</option>
+                </select>
+            </div>
+            
+        </div>
+        <div class="col-4">
+            <div class="mb-3" >
+                <label for="region">Region</label>
+                <select id="region"  [(ngModel)]="employee.region"  name="region" class="form-control">
+                    <option  value="0" >Select</option>
+                    <option *ngFor="let r of regionCollection" value="{{r.id}}" >{{r.name}} </option>
+                </select>
+            </div>
         </div>
         
-    </div>
+   </div>
+   <div class="row">
+        <div class="col-4">
+            <div class="mb-3" >
+                <label for="region">Region</label>
+                <select id="region"  [(ngModel)]="regionArea"  name="region" class="form-control">
+                    <option  value="" >Select</option>
+                    <option *ngFor="let r of regionCollection" value="{{r.name}},{{r.id}}" >{{r.id}}: {{r.name}} </option>
+                </select>
+            </div>
+        </div>
+
    </div>
 
+
     <input type="submit" value="Add Employee" class="btn btn-primary"/>
-    <input type="button" value="Cancel" class="btn btn-default" (click)="resetPage(addEmployee)"/>
+    <input type="button" value="Cancel" class="btn btn-default" [disabled]="!addEmployee.valid" (click)="insertEmployee(addEmployee)"/>
 </form>

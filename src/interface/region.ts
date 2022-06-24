@@ -1,3 +1,4 @@
 export interface Region{
-    RegionName:String
+    id:number,
+    name:String
 }

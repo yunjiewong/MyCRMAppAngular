@@ -1,4 +1,4 @@
-<form #addRegion="ngForm" (submit) ="insertRegion(addRegion)" >
+<!-- <form #addRegion="ngForm" (submit) ="insertRegion(addRegion)" >
     <div class="row">
         <div class="col-3">
             <div class="mb-3">
@@ -12,4 +12,29 @@
     <input type="submit" value="Add region" class="btn btn-primary"/>
     <input type="button" value="Cancel" class="btn btn-default" (click)="resetPage(addRegion)"/>
 </form>
+ -->
+ <div *ngIf="isSuccessful" class="alert alert-success alert-dismissable fade show" role="alert">
+    <strong>New Region has been added! </strong>
+  
+    <a [routerLink]="'/region/list'"> Go to List</a>
+</div>
 
+
+ <h2>Add Region</h2>
+ <hr>
+ <form [formGroup]="addRegionForm">
+    <div class="form-group mb-3">
+        <label for="">Enter Region Name</label>
+        <input type="text" formControlName="regionName" class="form-control"/>
+        <div class="text-danger" *ngIf="addRegionForm.get('regionName')?.hasError('required') && addRegionForm.get('regionName')?.touched ">
+            Region is required.
+        </div>
+
+        <div class="text-danger" *ngIf="addRegionForm.get('regionName')?.hasError('minlength') && addRegionForm.get('regionName')?.touched">
+            Minimum 4 characters are required
+        </div>
+    </div>
+
+    
+    <input type="button" class="btn btn-primary" [disabled]="!addRegionForm.valid" value="Save Region " (click)="saveRegion()"/>
+ </form>

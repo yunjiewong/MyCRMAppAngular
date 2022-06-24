@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Region } from 'src/interface/region';
+import { RegionService } from 'src/services/region.service';
 
 @Component({
   selector: 'app-add-region',
@@ -9,19 +10,48 @@ import { Region } from 'src/interface/region';
 })
 export class AddRegionComponent implements OnInit {
 
-  region: Region={
-    RegionName:''
+
+addRegionForm: FormGroup;
+
+region:Region={
+  id: 0,
+ name :''
+};
+isSuccessful:boolean=false;
+// loadRegion={
+//     'regionName':"Asian",
+    
+//   }
+  
+
+  constructor(private builer: FormBuilder, private regionService: RegionService) {
+    this.addRegionForm =builer.group({
+        'regionName': new FormControl(null, [Validators.required,Validators.minLength(4)]),
+        
+    });
+
+    //this.addRegionForm.setValue(this.loadRegion); //must set all properties
+      // this.addRegionForm.patchValue(this.loadRegion);
   }
-  constructor() { }
 
   ngOnInit(): void {
   }
 
-  insertRegion(form:NgForm){
-    console.log(form.value)
+  
+  saveRegion(){
+    this.region.id = 0;
+    this.region.name =this.addRegionForm.value['regionName'];
+    this.regionService.insertRegion(this.region).subscribe((d:any)=>{
+      // alert("Region has been saved");
+      this.isSuccessful=true;
+    });
+ 
   }
-  resetPage(form:NgForm){
-    form.reset();
-  }
+  // insertRegion(form:NgForm){
+  //   console.log(form.value)
+  // }
+  // resetPage(form:NgForm){
+  //   form.reset();
+  // }
 
 }

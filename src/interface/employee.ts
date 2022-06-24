@@ -1,4 +1,5 @@
 export interface Employee{
+    
     firstName: string,
     lastName:string,
     city:string,
@@ -7,5 +8,10 @@ export interface Employee{
     birthDate:Date,
     region:number,
     reportsTo:number,
-    titleOfCourtesy:string
+    titleOfCourtesy:string,
+
+    regionName:string,
+    fullName:string,
+    id:number
+
 }

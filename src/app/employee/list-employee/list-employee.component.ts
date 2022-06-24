@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Employee } from 'src/interface/employee';
+import { EmployeeService } from 'src/services/employee.service';
 
 @Component({
   selector: 'app-list-employee',
@@ -7,21 +9,23 @@ import { Employee } from 'src/interface/employee';
   styleUrls: ['./list-employee.component.scss']
 })
 export class ListEmployeeComponent implements OnInit {
-  employee:Employee ={
-    firstName: 'Joe',
-    lastName:'Smith',
-    city:'LA',
-    title:'Manager',
-    hireDate:new Date(1/11/2012),
-    birthDate:new Date(1/22/1988),
-    region:1,
-    reportsTo:1,
-    titleOfCourtesy:'Mr'
-  
-  }
-  constructor() { }
+
+  empCollection:Employee[]=[]
+  constructor(private empService:EmployeeService,private router:Router) { }
 
   ngOnInit(): void {
+    this.getAllEmps();
   }
+
+  getAllEmps(){
+    this.empService.getAllEmployee().subscribe(d =>{
+        this.empCollection = d;
+    });
+  }
+
+  editEmployee(id:number){
+    this.router.navigate(['employee/edit/'+id]);
+  }
+
 
 }
