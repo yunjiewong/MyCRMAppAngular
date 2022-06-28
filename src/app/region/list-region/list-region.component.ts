@@ -35,4 +35,9 @@ export class ListRegionComponent implements OnInit {
     this.router.navigate(['region/edit/'+id]);
   }
 
+  callApi(){
+    this.regionService.callApiDemp().subscribe(d=>{
+      console.log(d);
+    })
+  }
 }

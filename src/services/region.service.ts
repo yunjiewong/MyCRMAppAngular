@@ -30,4 +30,8 @@ export class RegionService {
   updateRegion(region:Region):Observable<any>{
     return this.httpClient.put(this.url, region);
   }
+
+  callApiDemp(){
+    return this.httpClient.get("https://jsonplaceholder.typicode.com/posts");
+  }
 }

@@ -1,6 +1,8 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { Product } from 'src/interface/product';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { ProductService } from 'src/services/product.service';
+
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -9,25 +11,62 @@ import { NgForm } from '@angular/forms';
 export class AddProductComponent implements OnInit {
 
   product: Product={
-    name: '',
+    id:0, name: "",
     supplierId: 0,
     categoryId: 0,
     quantityPerUnit: 0,
-    unitPrice: 0,
+    unitPrice: 0, 
     unitsInStock: 0,
     unitsOnOrder: 0,
     reorderLevel: 0,
     discontinued: false
   }
-  constructor() { }
+  productForm: FormGroup;
+  isSuccessful:boolean=false;
+
+  constructor(private builer: FormBuilder,private productService: ProductService) {
+    this.productForm = builer.group({
+      'name': new FormControl(),
+      'supplierId':  new FormControl(), 
+      'categoryId': new FormControl(), 
+      'quantityPerUnit':  new FormControl(),
+      'unitPrice': new FormControl(), 
+      'unitsInStock':  new FormControl(), 
+      'unitsOnOrder': new FormControl(), 
+      'reorderLevel': new FormControl(), 
+      'discontinued': new FormControl()
+      
+    });
+  
+  }
 
   ngOnInit(): void {
-  }
   
-  insertProduct(form:NgForm){
-    console.log(form.value);
   }
-  resetPage(form:NgForm){
-    form.reset();
+    
+  
+  saveProduct(){
+    this.product.id = 0;
+    this.product.name =this.productForm.value['name'];
+    this.product.supplierId =this.productForm.value['supplierId'];
+    this.product.categoryId =this.productForm.value['categoryId'];
+    this.product.quantityPerUnit =this.productForm.value['quantityPerUnit'];
+    this.product.unitPrice =this.productForm.value['unitPrice'];
+    this.product.unitsInStock =this.productForm.value['unitsInStock'];
+    this.product.unitsOnOrder =this.productForm.value['unitsOnOrder'];
+    this.product.reorderLevel =this.productForm.value['reorderLevel'];
+    let d =this.productForm.value['discontinued'];
+    this.product.discontinued=false;
+    if(d=="0")
+    {
+      this.product.discontinued=true;
+    }
+  //  this.product.discontinued =this.productForm.value['discontinued'];
+
+    this.productService.insertProduct(this.product).subscribe((d)=>{
+      this.isSuccessful=true;
+      console.log(this.product);
+    });
+ 
   }
 }

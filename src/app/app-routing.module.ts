@@ -7,7 +7,8 @@ const routes: Routes = [
   {path:'category', loadChildren: () => import('./category/category.module').then(m=>m.CategoryModule) },
   {path:'customer', loadChildren: () => import('./customer/customer.module').then(m=>m.CustomerModule) },
   {path:'order', loadChildren: () => import('./order/order.module').then(m=>m.OrderModule) },
-  {path:'product', loadChildren: () => import('./product/product.module').then(m=>m.ProductModule) }
+  {path:'product', loadChildren: () => import('./product/product.module').then(m=>m.ProductModule) },
+  {path:'account', loadChildren: () => import('./account/account.module').then(m=>m.AccountModule) },
 ];
 
 @NgModule({

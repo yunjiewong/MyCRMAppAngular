@@ -12,6 +12,7 @@ export const environment = {
     customer:"customer",
     order:"order",
     product:"product",
+    accountsignup:"account/signup",
     
   },
 
