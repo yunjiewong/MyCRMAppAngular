@@ -2,6 +2,9 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import { Product } from 'src/interface/product';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ProductService } from 'src/services/product.service';
+import { ShipperService } from 'src/services/shipper.service';
+import { Shipper } from 'src/interface/shipper';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
@@ -23,8 +26,10 @@ export class AddProductComponent implements OnInit {
   }
   productForm: FormGroup;
   isSuccessful:boolean=false;
+  shipperCollection: Shipper[]=[];
 
-  constructor(private builer: FormBuilder,private productService: ProductService) {
+  constructor(private builer: FormBuilder,private productService: ProductService, 
+    private shipperService:ShipperService, private router:Router) {
     this.productForm = builer.group({
       'name': new FormControl(),
       'supplierId':  new FormControl(), 
@@ -41,10 +46,15 @@ export class AddProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  
+      this.getData();
   }
-    
   
+  getData(){
+    this.shipperService.getShipper().subscribe((data)=> {
+      this.shipperCollection=data;
+    });
+  }
+
   saveProduct(){
     this.product.id = 0;
     this.product.name =this.productForm.value['name'];
@@ -68,5 +78,8 @@ export class AddProductComponent implements OnInit {
       console.log(this.product);
     });
  
+  }
+  GoProductList(){
+    this.router.navigateByUrl("product/list");
   }
 }

@@ -13,7 +13,7 @@ export const environment = {
     order:"order",
     product:"product",
     accountsignup:"account/signup",
-    
+    accountlogin:"account/login"
   },
 
   

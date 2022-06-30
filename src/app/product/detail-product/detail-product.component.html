@@ -1,1 +1,52 @@
-<p>detail-product works!</p>
+<h4>Product Details</h4>
+
+<table class="table table-borderedr">
+   <tbody>
+      <tr>
+         <th>Name</th>
+         <th>{{product.name}}</th>
+      </tr>
+
+
+      <tr>
+         <th>Supplier</th>
+         <th>{{product.supplierId}}</th>
+      </tr>
+
+
+      <tr>
+         <th>CategoryId</th>
+         <th>{{product.categoryId}}</th>
+      </tr>
+
+      <tr>
+         <th>QuantityPerUnit</th>
+         <th>{{product.quantityPerUnit}}</th>
+      </tr>
+
+      <tr>
+         <th>unitPrice</th>
+         <th>{{product.unitPrice}}</th>
+      </tr>
+      <tr>
+         <th>unitsInStock</th>
+         <th>{{product.unitsInStock}}</th>
+      </tr>
+      <tr>
+         <th>unitsOnOrder</th>
+         <th>{{product.unitsOnOrder}}</th>
+      </tr>
+
+      <tr>
+         <th>reorderLevel</th>
+         <th>{{product.reorderLevel}}</th>
+      </tr>
+
+      <tr>
+         <th>discontinued</th>
+         <th>{{product.discontinued}}</th>
+      </tr>
+   </tbody>
+</table>
+
+<button class="btn btn-primary" (click)="GoBack()">Go Back</button>

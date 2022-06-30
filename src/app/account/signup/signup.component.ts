@@ -28,7 +28,7 @@ export class SignupComponent implements OnInit {
   signUp(){
     
     this.accountService.signUp(this.signUpForm.value).subscribe(d=>{
-      console.log(d);
+      
       alert(d);
       this.signUpForm.reset();
     })

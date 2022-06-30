@@ -18,11 +18,7 @@ region:Region={
  name :''
 };
 isSuccessful:boolean=false;
-// loadRegion={
-//     'regionName':"Asian",
-    
-//   }
-  
+
 
   constructor(private builer: FormBuilder, private regionService: RegionService) {
     this.addRegionForm =builer.group({
@@ -30,8 +26,7 @@ isSuccessful:boolean=false;
         
     });
 
-    //this.addRegionForm.setValue(this.loadRegion); //must set all properties
-      // this.addRegionForm.patchValue(this.loadRegion);
+ 
   }
 
   ngOnInit(): void {
@@ -47,11 +42,6 @@ isSuccessful:boolean=false;
     });
  
   }
-  // insertRegion(form:NgForm){
-  //   console.log(form.value)
-  // }
-  // resetPage(form:NgForm){
-  //   form.reset();
-  // }
+
 
 }

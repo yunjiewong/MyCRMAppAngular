@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuardGuard } from 'src/guard/auth-guard.guard';
+import { AdminGuard } from './admin.guard';
+import { DashboardComponent } from './layout/dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  {path:'region', loadChildren: () => import('./region/region.module').then(m=>m.RegionModule) },
-  {path:'employee', loadChildren: () => import('./employee/employee.module').then(m=>m.EmployeeModule) },
-  {path:'category', loadChildren: () => import('./category/category.module').then(m=>m.CategoryModule) },
-  {path:'customer', loadChildren: () => import('./customer/customer.module').then(m=>m.CustomerModule) },
-  {path:'order', loadChildren: () => import('./order/order.module').then(m=>m.OrderModule) },
-  {path:'product', loadChildren: () => import('./product/product.module').then(m=>m.ProductModule) },
-  {path:'account', loadChildren: () => import('./account/account.module').then(m=>m.AccountModule) },
+
+  {path:"dashboard",component:DashboardComponent, canActivate:[AdminGuard]},
+  {path:'login', component:LoginComponent, canActivate:[AdminGuard]}
+
 ];
 
 @NgModule({

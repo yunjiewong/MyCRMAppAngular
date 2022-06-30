@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 import { EmployeeService } from 'src/services/employee.service';
 import { RouterModule } from '@angular/router';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from 'src/interceptors/token.interceptor';
 
 
 
@@ -22,6 +24,8 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     RouterModule
   ],
-  providers:[EmployeeService]
+  providers:[EmployeeService,
+  {provide:HTTP_INTERCEPTORS, useClass:TokenInterceptor,multi:true
+  }]
 })
 export class EmployeeModule { }

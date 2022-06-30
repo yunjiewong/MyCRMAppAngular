@@ -38,4 +38,7 @@ export class ListProducComponent implements OnInit {
   detailProduct(id:any){
     this.router.navigate(['product/detail/'+id]);
   }
+  GoAddProduct(){
+    this.router.navigate(['product/add']);
+  }
 }
